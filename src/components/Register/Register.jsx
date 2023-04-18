@@ -11,6 +11,8 @@ import { Link } from "react-router-dom";
 const Register = () => {
   const [value, setValue] = useState("");
   const [error, setError] = useState("");
+  const [showPass, setShowPass] = useState(false);
+  const [passord, setPassword] = useState("");
   const [succes, setSuccess] = useState("");
 
   const auth = getAuth(app);
@@ -81,7 +83,7 @@ const Register = () => {
   };
 
   const handleShowPassword = () => {
-    console.log(pass);
+    setShowPass(!showPass);
   };
 
   return (
@@ -128,7 +130,7 @@ const Register = () => {
           </label>
           <input
             onBlur={handleBlurOnpass}
-            type="password"
+            type={showPass ? "text" : "password"}
             id="password"
             className="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-96 mx-auto p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
             required
